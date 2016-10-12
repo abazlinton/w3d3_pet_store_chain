@@ -27,19 +27,6 @@ class PetStore
     
   end
 
-  def pets
-    sql = "SELECT * FROM pets WHERE pet_store_id = #{@id}"
-    result = SqlRunner.run(sql)
-    return result.map {|pet| Pet.new(pet)}
-
-  end
-
-  def self.find(store_id)
-    sql = "SELECT * FROM pet_stores WHERE id = #{store_id}"
-    result = SqlRunner.run(sql).first
-    return PetStore.new(result)
-  end
-
   def update
     sql = "UPDATE pet_stores SET 
       name = '#{@name}', 
@@ -50,18 +37,37 @@ class PetStore
     return PetStore.new(result)
   end
 
-  def self.all
-   sql = "SELECT * FROM pet_stores"
-   result = SqlRunner.run(sql)
-   return result.map {|store| PetStore.new(store)}
-  end
-
   def delete
     sql = "DELETE FROM pet_stores WHERE id = #{@id}"
     result = SqlRunner.run(sql)
     return result
   end
 
+
+  def pets
+    sql = "SELECT * FROM pets WHERE pet_store_id = #{@id}"
+    result = SqlRunner.run(sql)
+    return result.map {|pet| Pet.new(pet)}
+
+  end
+
+  def self.all
+   sql = "SELECT * FROM pet_stores"
+   result = SqlRunner.run(sql)
+   return result.map {|store| PetStore.new(store)}
+  end
+
+  def self.find(store_id)
+    sql = "SELECT * FROM pet_stores WHERE id = #{store_id}"
+    result = SqlRunner.run(sql).first
+    return PetStore.new(result)
+  end
+
+  
+
+ 
+
+  
   
 
 
