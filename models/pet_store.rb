@@ -16,7 +16,12 @@ class PetStore
 
 
   def save
-    sql = "INSERT INTO pet_stores(name, address, stock_type) VALUES('#{@name}','#{@address}','#{@stock_type}') RETURNING *"
+    sql = "INSERT INTO pet_stores(name, address, stock_type) 
+      VALUES(
+      '#{@name}',
+      '#{@address}',
+      '#{@stock_type}') 
+      RETURNING *"
     result = SqlRunner.run(sql).first
     @id = result['id']
     

@@ -11,7 +11,12 @@ class Pet
     end
 
     def save
-      sql = "INSERT INTO pets(name, type, pet_store_id) VALUES('#{@name}','#{@type}', #{@pet_store_id}) RETURNING *"
+      sql = "INSERT INTO pets(name, type, pet_store_id) 
+        VALUES(
+        '#{@name}',
+        '#{@type}', 
+        #{@pet_store_id}) 
+        RETURNING *"
       result = SqlRunner.run( sql ).first
       @id = result['id']
     end
@@ -23,7 +28,12 @@ class Pet
     end
 
     def update
-      sql = "UPDATE pets SET name = '#{@name}', type = '#{@type}', pet_store_id = '#{@pet_store_id}'  WHERE id = #{@id} RETURNING *"
+      sql = "UPDATE pets SET 
+        name = '#{@name}', 
+        type = '#{@type}', 
+        pet_store_id = '#{@pet_store_id}'  
+        WHERE id = #{@id} 
+        RETURNING *"
       result = SqlRunner.run(sql).first
       return Pet.new(result)
     end
