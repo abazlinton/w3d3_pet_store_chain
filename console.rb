@@ -26,7 +26,7 @@ pp Pet.all
 puts "\nSTORE 1 PETS\n"
 pp store_1.pets
 
-puts "\nSTORE 1\n"
+puts "\nSTORE FOR PET 1\n"
 pp pet_1.get_store
 
 puts "\nFIND STORE 2\n"
