@@ -22,7 +22,7 @@ puts pet_1.store
 
 puts PetStore.find(1)
 
-puts PetStore.update_name(1, "John")
+pet_1 = Pet.update_pet_name(pet_1, "John")
 
 
 binding.pry

@@ -34,13 +34,7 @@ class PetStore
     return PetStore.new(result)
   end
 
-  def self.update_name(pet_id, name)
-    sql = "UPDATE pets SET name = '#{name}' WHERE id = #{pet_id}"
-    result = SqlRunner.run(sql)
-    return Pet.new(result)
-    return result
-
-  end
+  
 
 
 
